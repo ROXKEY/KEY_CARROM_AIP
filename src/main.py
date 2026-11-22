@@ -1,4 +1,4 @@
-# ====================================================================
+﻿# ====================================================================
 # Name: YOUR NAME HERE              Student ID: YOUR STUDENT ID HERE
 # 5FTC2067 AI Principles - Mini Project: Carrom (two players, with chance)
 # Modes : 1) Player vs Player  2) Player vs AI (Easy)  3) Player vs AI (Hard)
@@ -10,6 +10,7 @@
 #         and plays the one closest to victory.
 # Run   : pip install pygame   then   python carrom.py
 # ====================================================================
+import asyncio
 import copy
 import math
 import random
@@ -476,7 +477,7 @@ class Game:
 
 # =============================== MAIN ================================
 # Creates the window and runs the game loop.
-def main():
+async def main():
     pygame.init()
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("Carrom")
@@ -492,7 +493,7 @@ def main():
         game.update()
         game.draw()
         pygame.display.flip()
+        await asyncio.sleep(0)
 
 
-if __name__ == "__main__":
-    main()
+asyncio.run(main())
